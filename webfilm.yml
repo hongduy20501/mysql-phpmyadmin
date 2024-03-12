@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-film
+  labels:
+    app: film
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: film
+  template:
+    metadata:
+      labels:
+        app: film
+    spec:
+      containers:
+      - name: web-film
+        image: hongduylee/webfilm:webfilm-0.0.1
+        ports:
+        - containerPort: 80
+          hostPort: 8082
